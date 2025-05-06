@@ -7,15 +7,15 @@ const connection = require("./config/database");
 
 const app = express();
 const port = process.env.PORT;
+
+//config req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // Cấu hình view folder và view engine
 configViewEngine(app);
 
 //khai báo route
 app.use("/", webRoutes);
-
-connection.query("select * from SanPham sp", function (err, results, fields) {
-  console.log(">>>results", results);
-});
 
 // Server listen
 app.listen(port, () => {

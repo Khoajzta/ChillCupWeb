@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm Sản phẩm</title>
+    <link rel="stylesheet" href="/css/addProduct.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Thêm Sản phẩm</h2>
+      <form class="form-add-product" action="/create-product" method="post">
+        <label for="TenMon">Tên Sản phẩm</label>
+        <input type="text" name="TenMon" id="TenMon" required />
+
+        <label for="IDDanhMuc">ID Danh Mục</label>
+        <input type="text" name="IDDanhMuc" id="IDDanhMuc" required />
+
+        <label for="MoTa">Mô tả</label>
+        <input type="text" name="MoTa" id="MoTa" />
+
+        <label for="GiaBan">Giá bán</label>
+        <input type="text" name="GiaBan" id="GiaBan" required />
+
+        <button type="submit">Lưu sản phẩm</button>
+      </form>
+    </div>
+  </body>
+</html>

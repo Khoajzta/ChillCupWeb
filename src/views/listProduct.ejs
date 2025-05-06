@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Admin</title>
+    <link rel="stylesheet" href="/css/admin.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>Admin</h2>
+      <a href="getlistproduct">Quản lý Sản phẩm</a>
+      <!-- Thêm các menu khác nếu cần -->
+    </div>
+
+    <div class="main">
+      <h1>Quản lý Sản phẩm</h1>
+      <h2>Danh sách Sản phẩm</h2>
+
+      <div class="action-bar">
+        <a href="/addproduct" class="btn-add">+ Thêm sản phẩm mới</a>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên sản phẩm</th>
+            <th>Danh mục</th>
+            <th>Mô tả</th>
+            <th>Giá bán</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% listProducts.forEach(function(product) { %>
+          <tr>
+            <td><%=product.IDProduct%></td>
+            <td><%=product.TenMon%></td>
+            <td><%=product.IDDanhMuc%></td>
+            <td><%=product.MoTa%></td>
+            <td><%=product.GiaBan%></td>
+            <td>
+              <a href="/edit-product/1" class="btn btn-edit">Sửa</a>
+              <form
+                action="/delete-product/1"
+                method="POST"
+                style="display: inline"
+              >
+                <button type="submit" class="btn btn-delete">Xóa</button>
+              </form>
+            </td>
+          </tr>
+          <% });%>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
