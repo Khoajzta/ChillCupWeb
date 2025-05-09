@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sửa Sản phẩm</title>
+    <link rel="stylesheet" href="/css/addProduct.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Sửa Sản phẩm</h2>
+      <form class="form-add-product" action="/update-product" method="post">
+        <input
+          type="text"
+          name="IDSanPham"
+          id="IDSanPham"
+          required
+          value="<%=product.IDSanPham%>"
+          class="d-none"
+        />
+        <label for="TenMon">Tên Sản phẩm</label>
+        <input
+          type="text"
+          name="TenMon"
+          id="TenMon"
+          required
+          value="<%=product.TenMon%>"
+        />
+
+        <label for="IDDanhMuc">ID Danh Mục</label>
+        <input
+          type="text"
+          name="IDDanhMuc"
+          id="IDDanhMuc"
+          required
+          value="<%=product.IDDanhMuc%>"
+        />
+
+        <label for="MoTa">Mô tả</label>
+        <input type="text" name="MoTa" id="MoTa" value="<%=product.MoTa%>" />
+
+        <label for="GiaBan">Giá bán</label>
+        <input
+          type="text"
+          name="GiaBan"
+          id="GiaBan"
+          value="<%=product.GiaBan%>"
+          required
+        />
+
+        <button type="submit">Lưu sản phẩm</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -9,17 +9,16 @@
   <body>
     <div class="sidebar">
       <h2>Admin</h2>
-      <a href="getlistproduct">Quản lý Sản phẩm</a>
+      <a class="acction" href="/admin">Quản lý Sản phẩm</a>
+      <a class="acction" href="/sanphamngungban">
+        Quản lý sản phẩm đã ngưng bán</a
+      >
+      <a href="">Quản lý Danh Mục</a>
       <!-- Thêm các menu khác nếu cần -->
     </div>
 
     <div class="main">
-      <h1>Quản lý Sản phẩm</h1>
       <h2>Danh sách Sản phẩm</h2>
-
-      <div class="action-bar">
-        <a href="/addproduct" class="btn-add">+ Thêm sản phẩm mới</a>
-      </div>
 
       <table>
         <thead>
@@ -35,19 +34,18 @@
         <tbody>
           <% listProducts.forEach(function(product) { %>
           <tr>
-            <td><%=product.IDProduct%></td>
+            <td><%=product.IDSanPham%></td>
             <td><%=product.TenMon%></td>
             <td><%=product.IDDanhMuc%></td>
             <td><%=product.MoTa%></td>
             <td><%=product.GiaBan%></td>
             <td>
-              <a href="/edit-product/1" class="btn btn-edit">Sửa</a>
               <form
-                action="/delete-product/1"
+                action="/banlai-product/<%=product.IDSanPham%>"
                 method="POST"
                 style="display: inline"
               >
-                <button type="submit" class="btn btn-delete">Xóa</button>
+                <button type="submit" class="btn btn-edit">Bán lại</button>
               </form>
             </td>
           </tr>

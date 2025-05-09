@@ -12,3 +12,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+function showConfirm() {
+  document.getElementById("confirmModal").style.display = "block";
+}
+
+function hideConfirm() {
+  document.getElementById("confirmModal").style.display = "none";
+}
+
+function submitForm() {
+  document.getElementById("deleteForm").submit();
+}

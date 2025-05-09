@@ -9,24 +9,25 @@
   <body>
     <div class="sidebar">
       <h2>Admin</h2>
-      <a class="acction" href="getlistproduct">Quản lý Sản phẩm</a>
-
+      <a class="acction" href="">Quản lý Sản phẩm</a>
+      <a class="acction" href="/sanphamngungban">
+        Quản lý sản phẩm đã ngưng bán</a
+      >
       <a href="">Quản lý Danh Mục</a>
       <!-- Thêm các menu khác nếu cần -->
     </div>
 
     <div class="main">
-      <h1>Quản lý Sản phẩm</h1>
       <h2>Danh sách Sản phẩm</h2>
 
       <div class="action-bar">
-        <a href="/addproduct" class="btn-add">+ Thêm sản phẩm mới</a>
+        <a href="/addproduct" class="btn-add d-inline">+ Thêm sản phẩm mới</a>
       </div>
 
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>IDSanPham</th>
             <th>Tên sản phẩm</th>
             <th>Danh mục</th>
             <th>Mô tả</th>
@@ -36,24 +37,46 @@
         </thead>
         <tbody>
           <% listProducts.forEach(function(product) { %>
-          <tr>
-            <td><%=product.IDProduct%></td>
+          <tr class="product">
+            <td><%=product.IDSanPham%></td>
             <td><%=product.TenMon%></td>
             <td><%=product.IDDanhMuc%></td>
             <td><%=product.MoTa%></td>
             <td><%=product.GiaBan%></td>
             <td>
-              <a href="/edit-product/1" class="btn btn-edit">Sửa</a>
+              <a
+                href="/updateproduct/<%=product.IDSanPham%>"
+                class="btn btn-edit"
+                >Sửa</a
+              >
+              <!-- Nút xóa + Form -->
               <form
-                action="/delete-product/1"
+                id="deleteForm"
+                action="/delete-product/<%=product.IDSanPham%>"
                 method="POST"
                 style="display: inline"
               >
-                <button type="submit" class="btn btn-delete">Xóa</button>
+                <button
+                  type="button"
+                  class="btn btn-edit"
+                  onclick="showConfirm()"
+                >
+                  Ngừng bán
+                </button>
               </form>
             </td>
           </tr>
           <% });%>
+
+          <!-- Modal xác nhận -->
+          <div id="confirmModal" class="modal">
+            <div class="modal-content">
+              <h4>Ngừng bán sản phẩm</h4>
+              <p>Bạn muốn ngừng bán sản phẩm này?</p>
+              <button onclick="submitForm()" class="btn-cf">Xác nhận</button>
+              <button onclick="hideConfirm()" class="btn-cancle">Hủy</button>
+            </div>
+          </div>
         </tbody>
       </table>
     </div>
